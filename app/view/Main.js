@@ -20,7 +20,14 @@ Ext.define('MyApp.view.Main', {
         region: 'center',
         xtype: 'tabpanel',
         items:[{
-            title: 'Center Tab 1'
+            title: 'Center Tab 1',
+            listeners: {
+                afterrender: function(p) {
+                    var _ = require('underscore');
+                    var tmpl = _.template('<h1>Hello, <%= name %><h1>')
+                    p.body.update(tmpl({ name: 'John' }));
+                }
+            }
         }]
     }]
 });
